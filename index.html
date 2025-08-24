@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DEMO • Hotel Esencial</title>
+  <meta name="description" content="Página de muestra para hotel/posada. DEMO sin datos reales." />
+  <!-- Tailwind Play CDN (ideal para demos). Para producción, compilar Tailwind. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body{font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"}
+    .ribbon-demo{position:fixed;left:-60px;top:22px;background:#334155;color:#fff;padding:8px 80px;transform:rotate(-35deg);z-index:50;font-weight:700;box-shadow:0 6px 16px rgba(0,0,0,.2)}
+  </style>
+  <script>
+    /* ================================
+       ⚙️ VARIABLES A PERSONALIZAR
+       - Cambiá BRAND_NAME y WHATSAPP_NUMBER y listo.
+       - El resto del contenido es ilustrativo (DEMO).
+       ================================ */
+    const BRAND_NAME = 'Hotel Demo Esencial';
+    const WHATSAPP_NUMBER = '5493764000000'; // Ej.: 549 + código de área + número (sin + ni 0)
+
+    function setRoom(room){
+      const r = document.getElementById('room');
+      if(r){ r.value = room; }
+      const s = document.getElementById('reserva');
+      if(s){ s.scrollIntoView({behavior:'smooth'}); }
+    }
+
+    function sendWhatsApp(e){
+      e.preventDefault();
+      const checkin  = document.getElementById('checkin').value || 'sin fecha';
+      const checkout = document.getElementById('checkout').value || 'sin fecha';
+      const guests   = document.getElementById('guests').value || '1';
+      const room     = document.getElementById('room').value || 'a confirmar';
+      const msg = `Hola! Quiero reservar en ${BRAND_NAME}.\nHabitación: ${room}\nCheck-in: ${checkin}\nCheck-out: ${checkout}\nHuéspedes: ${guests}.\n¿Hay disponibilidad?`;
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <!-- CINTA DEMO -->
+  <div class="ribbon-demo">DEMO • Contenido ilustrativo</div>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-emerald-600 grid place-content-center text-white font-extrabold">H</div>
+        <span class="font-extrabold tracking-tight">Hotel • DEMO Esencial</span>
+      </div>
+      <div class="hidden sm:flex items-center gap-4 text-sm">
+        <a href="#habitaciones" class="hover:underline">Habitaciones</a>
+        <a href="#reserva" class="hover:underline">Reserva</a>
+        <a href="#mapa" class="hover:underline">Ubicación</a>
+        <a href="#faq" class="hover:underline">FAQs</a>
+        <a href="#reserva" class="px-4 py-2 rounded-xl bg-emerald-600 text-white hover:bg-emerald-700">Reservar</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-white via-emerald-50 to-white"></div>
+    <div class="relative max-w-6xl mx-auto px-4 py-14 grid md:grid-cols-2 items-center gap-10">
+      <div>
+        <p class="text-xs inline-block px-2 py-1 rounded-lg border border-emerald-200 text-emerald-700">Plantilla de muestra</p>
+        <h1 class="mt-3 text-3xl md:text-5xl font-extrabold leading-tight">Descansá en <span class="text-emerald-700">{BRAND_NAME}</span> — simple, claro y listo para reservar</h1>
+        <p class="mt-4 text-lg text-slate-700">Mostrá lo esencial para convertir: habitaciones, WhatsApp y ubicación. Esta demo es 100% editable con tus fotos y textos.</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#habitaciones" class="px-5 py-3 rounded-xl border border-slate-200">Ver habitaciones</a>
+          <a href="#reserva" class="px-5 py-3 rounded-xl bg-emerald-600 text-white hover:bg-emerald-700">Reservar por WhatsApp</a>
+        </div>
+      </div>
+      <div class="rounded-2xl border border-slate-200 bg-white p-2 shadow-sm">
+        <div class="aspect-[16/10] rounded-xl bg-slate-100 grid place-content-center text-center text-slate-500">
+          <div>
+            <div class="text-6xl mb-3">🏨</div>
+            <p>Espacio para tu imagen o slider</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- POR QUÉ ELEGIRNOS -->
+  <section class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Por qué elegirnos</h2>
+    <p class="mt-2 text-slate-700">Tres razones claras que aumentan la reserva directa.</p>
+    <div class="mt-6 grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+        <div class="text-2xl">📍</div>
+        <h3 class="mt-1 font-bold">Ubicación estratégica</h3>
+        <p class="text-sm text-slate-600 mt-1">A minutos de puntos de interés. Estacionamiento incluido.</p>
+      </div>
+      <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+        <div class="text-2xl">🍽️</div>
+        <h3 class="mt-1 font-bold">Desayuno incluido</h3>
+        <p class="text-sm text-slate-600 mt-1">Opciones regionales y sin TACC a pedido.</p>
+      </div>
+      <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+        <div class="text-2xl">📶</div>
+        <h3 class="mt-1 font-bold">Wi‑Fi rápido</h3>
+        <p class="text-sm text-slate-600 mt-1">Ideal para workations y video llamadas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HABITACIONES RESUMEN -->
+  <section id="habitaciones" class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Habitaciones</h2>
+    <p class="mt-2 text-slate-700">Tres opciones para empezar. Podés agregar/eliminar en minutos.</p>
+    <div class="mt-6 grid md:grid-cols-3 gap-4">
+      <!-- Card 1 -->
+      <article class="rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-sm">
+        <div class="aspect-video bg-slate-100 grid place-content-center text-slate-500">Foto Standard</div>
+        <div class="p-4">
+          <h3 class="font-bold">Standard</h3>
+          <p class="text-sm text-slate-600">Cama queen, aire, TV, wifi. Desayuno incluido.</p>
+          <div class="mt-3 flex items-center justify-between">
+            <span class="text-sm text-emerald-700">Desde $XX.XXX</span>
+            <button onclick="setRoom('Standard')" class="text-sm underline">Reservar</button>
+          </div>
+        </div>
+      </article>
+      <!-- Card 2 -->
+      <article class="rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-sm">
+        <div class="aspect-video bg-slate-100 grid place-content-center text-slate-500">Foto Superior</div>
+        <div class="p-4">
+          <h3 class="font-bold">Superior</h3>
+          <p class="text-sm text-slate-600">Vista al jardín, frigobar, smart TV.</p>
+          <div class="mt-3 flex items-center justify-between">
+            <span class="text-sm text-emerald-700">Desde $XX.XXX</span>
+            <button onclick="setRoom('Superior')" class="text-sm underline">Reservar</button>
+          </div>
+        </div>
+      </article>
+      <!-- Card 3 -->
+      <article class="rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-sm">
+        <div class="aspect-video bg-slate-100 grid place-content-center text-slate-500">Foto Suite</div>
+        <div class="p-4">
+          <h3 class="font-bold">Suite</h3>
+          <p class="text-sm text-slate-600">Amplia, balcón privado, hidromasaje.</p>
+          <div class="mt-3 flex items-center justify-between">
+            <span class="text-sm text-emerald-700">Desde $XX.XXX</span>
+            <button onclick="setRoom('Suite')" class="text-sm underline">Reservar</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- RESERVA RÁPIDA -->
+  <section id="reserva" class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Reserva rápida</h2>
+    <p class="mt-2 text-slate-700">Completá fechas y huéspedes. El mensaje se abre en WhatsApp con todo escrito.</p>
+
+    <form onsubmit="sendWhatsApp(event)" class="mt-6 grid md:grid-cols-6 gap-3 p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+      <div class="md:col-span-2">
+        <label for="checkin" class="text-sm text-slate-600">Check‑in</label>
+        <input id="checkin" type="date" class="mt-1 w-full px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-300" />
+      </div>
+      <div class="md:col-span-2">
+        <label for="checkout" class="text-sm text-slate-600">Check‑out</label>
+        <input id="checkout" type="date" class="mt-1 w-full px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-300" />
+      </div>
+      <div>
+        <label for="guests" class="text-sm text-slate-600">Huéspedes</label>
+        <input id="guests" type="number" min="1" value="2" class="mt-1 w-full px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-300" />
+      </div>
+      <div class="hidden">
+        <label for="room" class="text-sm">Habitación</label>
+        <input id="room" type="text" />
+      </div>
+      <div class="flex items-end">
+        <button class="w-full px-4 py-3 rounded-xl bg-emerald-600 text-white hover:bg-emerald-700">Enviar por WhatsApp</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- MAPA / CÓMO LLEGAR -->
+  <section id="mapa" class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Cómo llegar</h2>
+    <p class="mt-2 text-slate-700">Ubicación de referencia. Reemplazá por tu mapa/iframe real.</p>
+    <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-4">
+      <div class="aspect-[16/9] bg-slate-100 grid place-content-center text-slate-500">Mapa / Embed (DEMO)</div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Preguntas frecuentes</h2>
+    <div class="mt-6 grid md:grid-cols-2 gap-4">
+      <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+        <p class="font-semibold">¿Cuál es el horario de check‑in y check‑out?</p>
+        <p class="text-sm text-slate-600 mt-1">Check‑in desde las 14:00 y check‑out hasta las 10:00 (DEMO).</p>
+      </div>
+      <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+        <p class="font-semibold">¿Aceptan mascotas?</p>
+        <p class="text-sm text-slate-600 mt-1">Consultar disponibilidad (DEMO).</p>
+      </div>
+      <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+        <p class="font-semibold">¿Qué métodos de pago aceptan?</p>
+        <p class="text-sm text-slate-600 mt-1">Efectivo, transferencia o link de pago (DEMO).</p>
+      </div>
+      <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+        <p class="font-semibold">¿La reserva es inmediata?</p>
+        <p class="text-sm text-slate-600 mt-1">Respondemos por WhatsApp para confirmar disponibilidad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="mt-10 border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-600">
+      <p>© <span id="year"></span> {BRAND_NAME}. DEMO para uso comercial ilustrativo.</p>
+      <div class="flex items-center gap-4">
+        <a class="underline" href="#">Política de privacidad</a>
+        <a class="underline" href="#">Términos</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
